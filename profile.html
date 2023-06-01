@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Profile</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="mt-5 text-white">Profile</h2>
+      <hr />
+      <h3 class="wel text-white">Welcome</h3>
+      <div class="move">
+        <img
+          class="rounded profile-pic mt-5"
+          src="https://i.pinimg.com/736x/80/83/61/808361ea587ab44c0c618f63bdbf93be.jpg"
+          alt=""
+          id="profile"
+        />
+        <h4 class="mt-5 text-white">
+          <script>
+            document.write(localStorage.getItem("name"));
+          </script>
+        </h4>
+        <button onclick="Logout();" class="log btn btn-primary">Logout</button>
+        <div class="change-image mt-5">
+          <input
+            id="file"
+            type="file"
+            onchange="loadFile(event)"
+            class="mt-2"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let name = localStorage.getItem("name") ? localStorage.getItem("name") : "";
+    console.log(name);
+    if (name == "") {
+      alert("U need to login first");
+      window.location.href = "index.html";
+    }
+    function Logout() {
+      localStorage.removeItem("name");
+      localStorage.removeItem("email");
+      window.location.href = "index.html";
+    }
+    var loadFile = function (event) {
+      var image = document.getElementById("profile");
+      image.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+    document.querySelector("#file").addEventListener("change", function () {
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        localStorage.setItem("recent-image", reader.result);
+      });
+      reader.readAsDataURL(this.files[0]);
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const recentImageDataUrl = localStorage.getItem("recent-image");
+      if (recentImageDataUrl) {
+        document
+          .querySelector("#profile")
+          .setAttribute("src", recentImageDataUrl);
+      }
+    });
+  </script>
+</html>

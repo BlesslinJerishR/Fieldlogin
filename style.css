@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #000;
+}
+
+.br-rd {
+  border-radius: 11px;
+}
+
+.login-box {
+  box-shadow: rgb(0, 0, 0, 0.3) 0px 3px 30px;
+}
+
+.container-fluid {
+  margin-top: 7%;
+}
+
+.wel {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+body {
+  color: white;
+}
+
+.log {
+  margin-left: 119px;
+  margin-top: -40px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  height: 200px;
+}
+
+.move {
+  margin-left: 40%;
+  color: transparent;
+}
+
+#profile {
+  color: transparent;
+  transition: all 0.3s ease;
+  @include object-center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+input[type="file"]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: transparent;
+  padding: 10px 20px;
+  height: 100px;
+  border-radius: 10px;
+  color: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: transparent;
+}
+
+.change-image {
+  position: absolute;
+  margin-top: -200px !important;
+}
